@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opération paiement WAVE</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50% 0;
+            background: #EBF0F5;
+        }
+        h1 {
+            color: #88B04B;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #404F5E;
+            font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+            font-size:32px;
+            margin: 0;
+        }
+        i {
+            color: #9ABC66;
+            font-size: 100px;
+            line-height: 200px;
+            margin-left:-15px;
+        }
+        .card {
+            background: white;
+            padding: 60px;
+            border-radius: 4px;
+            box-shadow: 0 2px 3px #C8D0D8;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        button{
+            border-radius: 4px;
+            background: #d0d0d0;
+            border: 0;
+            padding: 10px;
+            color: black;
+            font-size: 32px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        #echec-icon{
+            color: #FF586B;
+        }
+        #echec-titre{
+            color: #FF586B;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="succes" style="display: none">
+        <div class="card">
+            <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+                <i class="checkmark">✓</i>
+            </div>
+            <h1>Opération réussie</h1>
+            <p>Votre paiement est effectué avec succes</p>
+            <br><br>
+            <button style="font-size: 25px">Veuillez retourner sur l'application</button>
+        </div>
+    </div>
+    <div id="echec" style="display: none">
+        <div class="card">
+            <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+                <i class="checkmark" id="echec-icon">❌</i>
+            </div>
+            <h1 id="echec-titre">Opération échouée</h1>
+            <p>Votre paiement ne s'est pas bien déroulé</p>
+            <br><br>
+            <button>Retourner sur l'application</button>
+        </div>
+    </div>
+    <script>
+        let urlParams = new URLSearchParams(window.location.search)
+        let statut = urlParams.get('status')
+        if (statut === 'success') {
+            document.getElementById('succes').style.display = 'block'
+        } else {
+            document.getElementById('echec').style.display = 'block'
+        }
+    </script>
+</body>
+</html>
